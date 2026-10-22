@@ -18,6 +18,68 @@ graph TD
 
 ---
 
+## 📁 Project Directory Structure
+
+```text
+mern-project/
+├── .gitignore                    # Global ignore rules (node_modules, .env, uploads, build outputs)
+├── docker-compose.yml            # Multi-container orchestration (Mongo, Express, NGINX)
+├── package.json                  # Root scripts (concurrent dev runner)
+├── README.md                     # Comprehensive project documentation
+│
+├── client/                       # Frontend React Single Page Application (SPA)
+│   ├── .env.example              # Client environment template
+│   ├── Dockerfile                # Production multi-stage Docker build with NGINX
+│   ├── index.html                # Main HTML entry point
+│   ├── nginx.conf                # Production reverse-proxy & routing configuration
+│   ├── package.json              # Frontend dependencies & scripts
+│   ├── vitest.config.js          # Unit & component test runner config
+│   ├── public/                   # Static assets (favicons, SVGs)
+│   └── src/
+│       ├── api/                  # Axios HTTP client configuration & interceptors
+│       ├── assets/               # Brand images and SVGs
+│       ├── components/           # Reusable UI component modules
+│       │   ├── common/           # Global elements (Navbar, Sidebar, ProtectedRoute, Badges)
+│       │   ├── complaints/       # Ticket forms, timelines, status steppers, chat
+│       │   ├── dashboard/        # Metrics cards, status charts, category charts
+│       │   ├── feedback/         # Star rating & resolution feedback modal
+│       │   └── __tests__/        # Component test suites (Vitest + RTL)
+│       ├── context/              # Global React context providers (AuthContext, ComplaintContext)
+│       ├── pages/                # Route views categorized by access scope
+│       │   ├── admin/            # Admin analytics, agent management, feedback audits
+│       │   ├── agent/            # Agent ticket workload queue & resolution dashboard
+│       │   ├── auth/             # Login, Register, ForgotPassword, ResetPassword
+│       │   └── user/             # User ticket submission, detail view, personal profile
+│       ├── theme/                # Custom Material-UI theme definition
+│       └── utils/                # Helpers, CSV/PDF export utilities, Socket.io client
+│
+├── server/                       # Backend Node.js & Express.js REST API
+│   ├── .env.example              # Server environment template
+│   ├── Dockerfile                # Backend containerization Dockerfile
+│   ├── jest.config.js            # Automated integration test configuration
+│   ├── package.json              # Backend dependencies & scripts
+│   ├── seeder.js                 # Automated database initialization & mock data seeder
+│   ├── server.js                 # Express server initialization, middleware & socket setup
+│   ├── config/                   # MongoDB connection logic (Mongoose)
+│   ├── controllers/              # Route controllers (Auth, Complaints, Admin, Messages, Feedback)
+│   ├── middleware/               # Auth guard (JWT), RBAC, Multer upload, error handlers
+│   ├── models/                   # Mongoose data schemas (User, Complaint, Message, Feedback)
+│   ├── routes/                   # Express endpoint routers
+│   ├── tests/                    # Integration & API unit test suites (Jest + Supertest)
+│   ├── uploads/                  # User attachment storage (gitignored with .gitkeep)
+│   ├── utils/                    # Email dispatchers (Nodemailer) & API error class
+│   └── validators/               # Input validation rules (express-validator)
+│
+└── docs/                         # Project architecture & system specifications
+    ├── README.md                 # Documentation catalog
+    ├── feature-specification.pdf # Functional & user requirements
+    ├── project-architecture.pdf  # Architectural diagrams & flows
+    ├── roles-and-responsibilities.pdf # Access control & stakeholder matrices
+    └── technical-architecture-mern.pdf # Full-stack technical blueprints
+```
+
+---
+
 ## 👥 Roles & Permissions Matrix
 
 | Capability | USER | AGENT | ADMIN |
